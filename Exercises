@@ -1,0 +1,231 @@
+package MethodsHomework;
+
+public class MethodsHomework {
+	public static void main(String[] args) {
+
+		//		1. Dat fiind un numar de la 1 la 12, returneaza numele lunii asociate.
+		System.out.println(getMonth(10)); 
+
+		//		2. Rezolva problema de data trecuta folosind metode (cel putin 2) 
+		//		(Having a quote as string: "Test automation is wonderful". Compute how many vowels and consonant exists.)
+		String testString = "Test automation is wonderful";
+		System.out.println("Number of vocals: " + countVowels(testString) + " Number of consonants: " + countConsonants(testString));
+
+
+		//		3. Rezolva problema de data trecuta folosind metode (cel putin 3) 
+		//		(I take into consideration the numbers from 0 to 10. For odd numbers, compute their sum, for even numbers, compute their product.)
+
+		System.out.println("Sum: " + oddSum(10)+ " Prod: "+ evenProd(10));
+		
+		//		4.Defineste o metoda care calculeaza maximul dintre 3 numere date. 
+
+
+		System.out.println("Maximul este: " + maxThree(10,80,79));
+		
+		
+		//		5.Creaza o metoda care returneaza true daca un anumit caracter e vocala si false daca nu e vocala.
+
+		System.out.println("isVowel(e): " +isVowel('e'));
+		
+		
+		//		6. Genereaza random un nr intreg, maxim pana la 100
+		
+		System.out.println(rdm0_100());
+		
+		//		7. Genereaza random un nr intreg intr-un anumit range. e.g. intre 4 si 10 , valori variabile.
+		
+		System.out.println(rdm_min_max (12,78));
+	
+		//		8. Scrie o metoda java care calculeaza cate cuvinte sunt intr-un string. 
+		
+		System.out.println(wordsInString("Ana  are mere  !")); 
+	}	
+	//	1. Dat fiind un numar de la 1 la 12, returneaza numele lunii asociate.
+
+
+	public static String getMonth(int monthNr) {
+		String monthName = "";
+
+		switch(monthNr) {
+		case 1:
+			monthName = "January";
+			break;
+		case 2:
+			monthName = "February";
+			break;
+		case 3:
+			monthName = "March";
+			break;
+		case 4:
+			monthName = "April";
+			break;
+		case 5:
+			monthName = "May";
+			break;
+		case 6:
+			monthName = "June";
+			break;
+		case 7:
+			monthName = "July";
+			break;
+		case 8:
+			monthName = "August";
+			break;
+		case 9:
+			monthName = "September";
+			break;
+		case 10:
+			monthName = "October";
+			break;
+		case 11:
+			monthName = "November";
+			break;
+		case 12:
+			monthName = "December";
+			break;
+		default :
+			monthName = "Inexinstent month number";
+			break;
+		}
+
+		return monthName;
+	} // end getMonth()
+
+	//	2. Rezolva problema de data trecuta folosind metode (cel putin 2) 
+	//	(Having a quote as string: "Test automation is wonderful". Compute how many vowels and consonant exists.)
+
+	public static int countVowels (String testString) {
+		int vowels = 0;
+
+		String quote = testString.toLowerCase();
+		for (int i=0;i<quote.length();i++) {
+			char ch = quote.charAt(i);
+			if (ch == 'a'|| ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+				vowels = vowels +1;
+			}
+		}
+		return vowels;
+	} // end countVowels
+
+	public static int countConsonants (String testString) {
+		int consonants = 0;
+
+		String quote = testString.toLowerCase();
+		for (int i=0;i<quote.length();i++) {
+			char ch = quote.charAt(i);
+			if (ch != 'a'&& ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u' && ch != ' ') {
+				consonants = consonants +1;
+			}
+		}
+		return consonants;
+	} // end countConsonants
+
+	//	3. Rezolva problema de data trecuta folosind metode (cel putin 3) 
+	//	(I take into consideration the numbers from 0 to 10. For odd numbers, compute their sum, for even numbers, compute their product.)
+	
+	public static boolean isOdd (int nr) { 
+		boolean isOdd =  true;
+
+		if (nr%2 == 0) {
+			isOdd = false;
+		}
+		return isOdd;	
+	} //end isOdd
+
+	public static int oddSum (int Number) {
+		int sum = 0;
+		for (int i=0; i<=Number; i++) {
+			if (isOdd(i)) {
+				sum = sum + i;
+			}
+		}
+		return sum;
+	} // end oddSum
+
+	public static int evenProd (int Number) {
+		int product=1;
+		for (int i=1; i<=Number; i++) {
+			if (!isOdd(i)) {
+				product = product * i;
+			}
+		}
+		return product;
+	} //end evenProd
+
+	//	4.Defineste o metoda care calculeaza maximul dintre 3 numere date.
+	
+	public static int maxThree (int a, int b, int c) {
+		if (a>b) {
+			if (a>c)				
+				return a;
+			else return c;
+		}
+		else {
+			if (b>c)
+				return b;
+			else return c;
+		}
+	}//end maxThree
+
+    //	5.Creaza o metoda care returneaza true daca un anumit caracter e vocala si false daca nu e vocala.
+	
+	public static boolean isVowel (char chr) {
+		char litera = Character.toLowerCase(chr);
+		if (litera == 'a'|| litera == 'e' || litera == 'i' || litera == 'o' || litera == 'u') {
+			return true;
+		}
+		return false;
+	}//end isVowel
+	
+    //	6. Genereaza random un nr intreg, maxim pana la 100
+	
+	public static int rdm0_100 () {
+		return (int) (Math.random() * 100) ;
+	}//end rdm0_100
+	
+   //	7. Genereaza random un nr intreg intr-un anumit range. e.g. intre 4 si 10 , valori variabile.
+	
+	public static int rdm_min_max (int min, int max) {
+		if(min>max)
+		{ int aux = min;
+		min = max;
+		max=aux;
+		}
+		return (int) (min + (Math.random() * (max - min)));
+	}//end rdm_min_max
+
+   //	8. Scrie o metoda java care calculeaza cate cuvinte sunt intr-un string.
+		
+	public static int wordsInString(String str) {
+		if (str == null || str.isEmpty()) {
+		      return 0;
+		    }
+		    int wordCount = 0;
+
+		    boolean isWord = false;
+		    int endOfLine = str.length() - 1;
+		    char[] characters = str.toCharArray();
+
+		    for (int i = 0; i < characters.length; i++) {
+		      // if the char is a letter, word = true.
+		      if (Character.isLetter(characters[i]) && i != endOfLine) {
+		        isWord = true;
+
+		        // if char isn't a letter and there have been letters before,
+		        // counter goes up.
+		      } else if (!Character.isLetter(characters[i]) && isWord==true) {
+		        wordCount++;
+		        isWord = false;
+
+		        // last word of String; if it doesn't end with a non letter, it
+		        // wouldn't count without this.
+		      } else if (Character.isLetter(characters[i]) && i == endOfLine) {
+		        wordCount++;
+		      }
+		    }
+
+		    return wordCount;
+
+  }//end wordsInString
+	
+} // end class MethodsHomework
